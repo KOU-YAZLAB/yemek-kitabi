@@ -1,0 +1,68 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.yazlab.MainController">
+
+    <top>
+        <HBox spacing="10">
+            <TextField fx:id="searchField" promptText="Tarif Adı Göre Ara"/>
+            <Button text="Ara" onAction="#searchRecipe"/>
+            <Button text="Yenile" onAction="#refreshPage"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane>
+
+            <Tab text="Tarif Listesi" closable="false">
+                <TableView fx:id="recipeTable" onMouseClicked="#handleTableClick">
+                    <columns>
+                        <TableColumn text="Tarif ID" fx:id="recipeIdColumn"/>
+                        <TableColumn text="Tarif Adı" fx:id="recipeNameColumn"/>
+                        <TableColumn text="Kategori" fx:id="categoryColumn"/>
+                        <TableColumn text="Hazırlama Süresi" fx:id="preparationTimeColumn"/>
+                        <TableColumn text="Hazırlanış" fx:id="instructionsColumn"/>
+                        <TableColumn text="Malzemeler" fx:id="ingredientListColumn"/>
+                        <TableColumn fx:id="totalCostColumn" text="Toplam Maliyet" />
+                    </columns>
+                </TableView>
+            </Tab>
+
+            <Tab text="Tarif Ekle" closable="false">
+                <GridPane>
+                    <Label text="Tarif Adı" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="recipeNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Kategori" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="categoryField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Hazırlama Süresi (dk)" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="preparationTimeField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="Talimatlar" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextArea fx:id="instructionsArea" GridPane.columnIndex="1" GridPane.rowIndex="3" prefRowCount="4"/>
+
+                    <Label text="Malzeme Seç" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="ingredientComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                    <Label text="Miktar" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <TextField fx:id="ingredientAmountField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                    <Button text="Malzemeyi Tarife Ekle" onAction="#addIngredientToRecipe" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                    <TableView fx:id="recipeIngredientTable" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <columns>
+                            <TableColumn text="Malzeme Adı" fx:id="ingredientNameColumn"/>
+                            <TableColumn text="Miktar" fx:id="ingredientAmountColumn"/>
+                            <TableColumn text="Birim" fx:id="ingredientUnitColumn"/>
+                        </columns>
+                    </TableView>
+
+                    <Button text="Malzeme Ekle" onAction="#addIngredient" GridPane.columnIndex="0"
+                            GridPane.rowIndex="4"/>
+
+                    <Button text="Tarifi Kaydet" onAction="#saveRecipe" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                </GridPane>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

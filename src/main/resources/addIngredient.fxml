@@ -1,0 +1,43 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.yazlab.AddIngredientController" hgap="10" vgap="10" alignment="CENTER">
+    <!-- Başlık -->
+    <Label text="Malzeme Ekle/Düzenle" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+    <!-- Malzeme Adı -->
+    <Label text="Malzeme Adı:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="ingredientNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <!-- Toplam Miktar -->
+    <Label text="Toplam Miktar:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="totalAmountField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <!-- Birim -->
+    <Label text="Birim:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="unitField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <!-- Birim Fiyat -->
+    <Label text="Birim Fiyat:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="unitPriceField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <!-- Malzeme Ekle Butonu -->
+    <Button text="Malzeme Ekle" onAction="#addNewIngredient" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <!-- Malzeme Listeleme Tablosu -->
+    <TableView fx:id="ingredientTable" prefHeight="200" GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2">
+        <columns>
+            <TableColumn fx:id="ingredientIdColumn" text="Malzeme ID"/>
+            <TableColumn fx:id="ingredientNameColumn" text="Malzeme Adı"/>
+            <TableColumn fx:id="totalAmountColumn" text="Toplam Miktar"/>
+            <TableColumn fx:id="unitColumn" text="Birim"/>
+            <TableColumn fx:id="unitPriceColumn" text="Birim Fiyat"/>
+        </columns>
+    </TableView>
+
+    <!-- Düzenle ve Silme Butonları -->
+    <HBox spacing="10" alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="7" GridPane.columnSpan="2">
+        <Button text="Düzeni Kaydet" onAction="#updateIngredient"/>
+        <Button text="Sil" onAction="#deleteSelectedIngredient"/>
+    </HBox>
+</GridPane>
